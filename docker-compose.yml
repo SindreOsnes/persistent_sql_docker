@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  sql:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports: 
+      - '1433:1433'
+    environment: 
+      - 'MSSQL_PID=Express'
+      - 'SA_PASSWORD=yourStrong(!)Password'
+      - 'ACCEPT_EULA=Y'
+    volumes:
+      - ./data/:/var/opt/mssql/data
+      - ./log/:/var/opt/mssql/log
+      - ./secrets:/var/opt/mssql/secrets
